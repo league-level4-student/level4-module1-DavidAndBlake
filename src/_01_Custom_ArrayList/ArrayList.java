@@ -9,27 +9,28 @@ public class ArrayList <T>{
 //
 //		public class DynamicIntegerArray {
 //			//1. Create a private int array. Don't initialize it.
-//
 //			
+//	DONE
 //			public DynamicIntegerArray() {
 //				//2. Initialize the int array to have 0 elements. 
 //				//   This will prevent a null pointer exception
 //			
 //			}
-//			
+//	DONE	
 //			//3. Complete the steps in the add method
 //			public void add(int v) {
 //				//A. create and initialize a new int array to be one 
 //				//   element longer than the member array
-//				
+//	DONE
 //				//B. set the last element of your new array to 
 //				//   the value passed into the method
-//				
+//	DONE?
 //				//C. iterate through the member array and 
 //				//   copy every element from the member array 
 //				//   to the new array
-//				
+//	DONE?
 //				//D. set the member array equal to the new array.
+//	DONE?
 //			}
 //			
 //			//4. Complete the steps in the get method
@@ -105,6 +106,7 @@ public class ArrayList <T>{
 	T[]array;
 	
 	public ArrayList() {
+		array = (T[])new Object[0];
 	}
 	
 	public T get(int loc) throws IndexOutOfBoundsException {
@@ -113,6 +115,14 @@ public class ArrayList <T>{
 	}
 	
 	public void add(T val) {
+		//B. set the last element of your new array to 
+//		//   the value passed into the method
+		T[] arrayMeasuringContest = (T[])new Object[(array.length)+1];
+		arrayMeasuringContest[array.length] = (T) val;
+		for (int i = 0; i < arrayMeasuringContest.length; i++) {
+			arrayMeasuringContest[i] = (T) array[i];
+		}
+		array = arrayMeasuringContest;
 		
 	}
 	
