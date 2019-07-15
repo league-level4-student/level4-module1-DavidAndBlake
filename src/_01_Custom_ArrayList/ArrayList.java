@@ -35,24 +35,24 @@ public class ArrayList <T>{
 //			
 //			//4. Complete the steps in the get method
 //			public int get(int location) {
-//				//A. Return the value of the memeber array at the location passed in
+//				//A. Return the value of the member array at the location passed in
 //				return 0;
 //			}
-//			
+//	DONE
 //			//5. Run the DynamicArrayTest to see if you are correct so far.
 //			
-//			
+//	DONE
 //			//6. Complete the steps in the set method
 //			public void set(int v, int location) {
 //				//A. set the variable at the location passed in to the method
 //				//   to the new value v
 //			}
-//			
+//	DONE
 //			//7. Complete the steps in the insert method
 //			public void insert(int v, int location) {
 //				//A. create and initialize a new int array to be one 
 //				//   element longer than the member array
-//				
+//	
 //				//B. Make a for loop that iterates through the new array
 //
 //					//C. if i is less than location:
@@ -110,8 +110,7 @@ public class ArrayList <T>{
 	}
 	
 	public T get(int loc) throws IndexOutOfBoundsException {
-		
-		return null;
+		return array[loc];
 	}
 	
 	public void add(T val) {
@@ -119,7 +118,7 @@ public class ArrayList <T>{
 //		//   the value passed into the method
 		T[] arrayMeasuringContest = (T[])new Object[(array.length)+1];
 		arrayMeasuringContest[array.length] = (T) val;
-		for (int i = 0; i < arrayMeasuringContest.length; i++) {
+		for (int i = 0; i < array.length; i++) {
 			arrayMeasuringContest[i] = (T) array[i];
 		}
 		array = arrayMeasuringContest;
@@ -127,11 +126,19 @@ public class ArrayList <T>{
 	}
 	
 	public void insert(int loc, T val) throws IndexOutOfBoundsException {
-		
+		//7. Complete the steps in the insert method
+//		public void insert(int v, int location) {
+//			//A. create and initialize a new int array to be one 
+//			//   element longer than the member array
+		int[T+1];
 	}
 	
 	public void set(int loc, T val) throws IndexOutOfBoundsException {
-		
+		//6. Complete the steps in the set method
+//		public void set(int v, int location) {
+//			//A. set the variable at the location passed in to the method
+//			//   to the new value v
+		array[loc] = val;
 	}
 	
 	public void remove(int loc) throws IndexOutOfBoundsException {
