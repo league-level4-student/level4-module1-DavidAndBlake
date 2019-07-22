@@ -2,8 +2,8 @@ package _01_Custom_ArrayList;
 
 @SuppressWarnings("unchecked")
 
-public class ArrayList <T>{
-	
+public class ArrayList<T> {
+
 //	{
 //		package _00_Dynamic_Integer_Array;
 //
@@ -65,11 +65,11 @@ public class ArrayList <T>{
 //				
 //				
 //				//F. set the member array equal to the new array
-//			
 //			}
-//			
+//	DONE
+//	
 //			//8. Run the tests again and check your progress
-//			
+//	DONE		
 //			//9. Complete the steps in the remove method
 //			public void remove(int location) {
 //				//A. create a new array that is one element smaller than the member array
@@ -102,51 +102,97 @@ public class ArrayList <T>{
 //			//13. Run the test again to see if you are finished.
 //		}
 //	}
-	
-	T[]array;
-	
+
+	T[] array;
+
 	public ArrayList() {
-		array = (T[])new Object[0];
+		array = (T[]) new Object[0];
 	}
-	
+
 	public T get(int loc) throws IndexOutOfBoundsException {
 		return array[loc];
 	}
-	
+
 	public void add(T val) {
-		//B. set the last element of your new array to 
+		// B. set the last element of your new array to
 //		//   the value passed into the method
-		T[] arrayMeasuringContest = (T[])new Object[(array.length)+1];
+		T[] arrayMeasuringContest = (T[]) new Object[(array.length) + 1];
 		arrayMeasuringContest[array.length] = (T) val;
 		for (int i = 0; i < array.length; i++) {
 			arrayMeasuringContest[i] = (T) array[i];
 		}
 		array = arrayMeasuringContest;
-		
+
 	}
-	
+
 	public void insert(int loc, T val) throws IndexOutOfBoundsException {
-		//7. Complete the steps in the insert method
+		// 7. Complete the steps in the insert method
 //		public void insert(int v, int location) {
 //			//A. create and initialize a new int array to be one 
 //			//   element longer than the member array
-		int[T+1];
+		// B. Make a for loop that iterates through the new array
+		//
+//							//C. if i is less than location:
+//						    //		set the element at i of the new array to the element at i of the member array
+//							
+//							//D. else if i is greater than location:
+//						    //		set the element at i of the new array to the i - 1 element of the member array
+//							
+//							//E. else, set the element at i of the new array to the value v
+//						
+//						
+//						//F. set the member array equal to the new array
+//					
+//					
+		T[] theOtherArrayMeasuringContest = (T[]) new Object[(array.length) + 1];
+		for (int i = 0; i < theOtherArrayMeasuringContest.length; i++) {
+			if (i < loc) {
+				theOtherArrayMeasuringContest[i] = array[i];
+			}
+			else if(i > loc) {
+				theOtherArrayMeasuringContest[i] = array[i - 1];
+			}
+			else {
+				theOtherArrayMeasuringContest[i] = val;
+			}
+			array = theOtherArrayMeasuringContest;
+		}
+		
 	}
-	
+
 	public void set(int loc, T val) throws IndexOutOfBoundsException {
-		//6. Complete the steps in the set method
+		// 6. Complete the steps in the set method
 //		public void set(int v, int location) {
 //			//A. set the variable at the location passed in to the method
 //			//   to the new value v
 		array[loc] = val;
 	}
-	
+
 	public void remove(int loc) throws IndexOutOfBoundsException {
-		
+//			//A. create a new array that is one element smaller than the member array
+//			
+//			//B. make a for loop to iterate through the member array
+//			
+//				//C. if i  is less than location
+//				//		set the element at i of the new array to the element at i of the member array
+//				
+//				//D. else if i  is greater than location
+//				//		set the element at i - 1 of the new array to the element at i of the member array
+//				
+//				//E. else, continue;
+//				
+//			//F. set the member array equal to the new array
+//		}
+		T[] inferiorityComplexArray = (T[]) new Object[(array.length) - 1];
+		for (int i = 0; i < array.length; i++) {
+			if(i < loc) {
+				inferiorityComplexArray[i] = array[i];
+			}
+		}
 	}
-	
+
 	public boolean contains(T val) {
-		
+
 		return false;
 	}
 
