@@ -24,13 +24,13 @@ public class ArrayList<T> {
 //	DONE
 //				//B. set the last element of your new array to 
 //				//   the value passed into the method
-//	DONE?
+//	DONE
 //				//C. iterate through the member array and 
 //				//   copy every element from the member array 
 //				//   to the new array
-//	DONE?
+//	DONE
 //				//D. set the member array equal to the new array.
-//	DONE?
+//	DONE
 //			}
 //			
 //			//4. Complete the steps in the get method
@@ -86,19 +86,20 @@ public class ArrayList<T> {
 //					
 //				//F. set the member array equal to the new array
 //			}
+//	DONE
 //			
 //			//10. Run the tests again the see if you are correct so far
-//			
+//	DONE
 //			//11. Complete the size method so that it returns the length of the member array.
 //			public int size() {
 //				return 0;
 //			}
-//			
+//	DONE
 //			//12. Complete the clear array so that it sets the member array 
 //			//    equal to a new integer array of size 0
 //			public void clear() {
 //			}
-//			
+//		
 //			//13. Run the test again to see if you are finished.
 //		}
 //	}
@@ -148,16 +149,13 @@ public class ArrayList<T> {
 		for (int i = 0; i < theOtherArrayMeasuringContest.length; i++) {
 			if (i < loc) {
 				theOtherArrayMeasuringContest[i] = array[i];
-			}
-			else if(i > loc) {
+			} else if (i > loc) {
 				theOtherArrayMeasuringContest[i] = array[i - 1];
-			}
-			else {
+			} else {
 				theOtherArrayMeasuringContest[i] = val;
 			}
-			array = theOtherArrayMeasuringContest;
 		}
-		
+array = theOtherArrayMeasuringContest;
 	}
 
 	public void set(int loc, T val) throws IndexOutOfBoundsException {
@@ -169,6 +167,8 @@ public class ArrayList<T> {
 	}
 
 	public void remove(int loc) throws IndexOutOfBoundsException {
+		// 9. Complete the steps in the remove method
+//		public void remove(int location) {
 //			//A. create a new array that is one element smaller than the member array
 //			
 //			//B. make a for loop to iterate through the member array
@@ -183,12 +183,19 @@ public class ArrayList<T> {
 //				
 //			//F. set the member array equal to the new array
 //		}
-		T[] inferiorityComplexArray = (T[]) new Object[(array.length) - 1];
+		T[] slightlyShorterCousinOfMainArray = (T[]) new Object[(array.length) - 1];
 		for (int i = 0; i < array.length; i++) {
-			if(i < loc) {
-				inferiorityComplexArray[i] = array[i];
+			if (i < loc) {
+				slightlyShorterCousinOfMainArray[i] = array[i];
+			} else if (i > loc) {
+				slightlyShorterCousinOfMainArray[i - 1] = array[i];
+			} else {
+				continue;
 			}
+			
+//		}
 		}
+		array = slightlyShorterCousinOfMainArray;
 	}
 
 	public boolean contains(T val) {
@@ -198,6 +205,6 @@ public class ArrayList<T> {
 
 	public int size() {
 		// TODO Auto-generated method stub
-		return 0;
+		return array.length;
 	}
 }
