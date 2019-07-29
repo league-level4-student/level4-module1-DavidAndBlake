@@ -99,14 +99,18 @@ public class ArrayList<T> {
 //			//    equal to a new integer array of size 0
 //			public void clear() {
 //			}
-//		
+//  DONE
 //			//13. Run the test again to see if you are finished.
+//	DONE
 //		}
 //	}
 
 	T[] array;
 
 	public ArrayList() {
+		array = (T[]) new Object[0];
+	}
+	public void clear() {
 		array = (T[]) new Object[0];
 	}
 
@@ -199,7 +203,11 @@ array = theOtherArrayMeasuringContest;
 	}
 
 	public boolean contains(T val) {
-
+		for (int i = 0; i < array.length; i++) {
+			if(array[i] == val) {
+				return true;
+			}
+		}
 		return false;
 	}
 
