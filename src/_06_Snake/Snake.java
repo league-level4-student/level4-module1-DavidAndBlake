@@ -36,22 +36,25 @@ public class Snake {
 	public void update() {
 		// 1. use a switch statement to check on the currentDirection
 		// of the snake and calculate its next x and y position.
-		Location newLocation=null;
+		Location newLocation = null;
 		switch (currentDirection) {
 		case UP: {
 			newLocation = new Location(head.getLocation().x, head.getLocation().y - 1);
 		}
+			break;
 		case DOWN: {
 			newLocation = new Location(head.getLocation().x, head.getLocation().y + 1);
 		}
+			break;
 		case LEFT: {
 			newLocation = new Location(head.getLocation().x - 1, head.getLocation().y);
 		}
+			break;
 		case RIGHT: {
 			newLocation = new Location(head.getLocation().x + 1, head.getLocation().y - 1);
 		}
+			break;
 		}
-
 		// 2. Iterate through the SnakeSegments in reverse order
 		for (int i = snake.size(); i > 0; i--) {
 
@@ -71,30 +74,43 @@ public class Snake {
 		// is true.
 		// set canMove equal to false.
 		// make sure the snake cannot completely reverse directions.
-
+		if (currentDirection == Direction.UP) { // THIS IS HOW YOU PREVENT THE SNAKE FROM REVERSING DIRECTIONS
+			if (d != Direction.DOWN) {
+				currentDirection = d;
+			}
+		}
+		if (canMove) {
+			currentDirection = d;
+		}
+		canMove = false;
+//		I DON'T KNOW HOW TO ENSURE THE SNAKE CAN'T REVERSE DIRECTIONS. ASK DAVID ABOUT THAT.
 	}
 
 	public void reset(Location loc) {
 		// 1. clear the snake
-
+		snake.clear();
 		// 2. set the location of the head
-
+		head.setLocation(loc);
 		// 3. add the head to the snake
-
+		head.draw(null);
 	}
 
 	public boolean isOutOfBounds() {
 		// 1. complete the method so it returns true if the head of the snake is outside
 		// of the window
 		// and false otherwise
+		int x = head.getLocation().x;
+		int y = head.getLocation().y;
+		if (x < 0 || x > _00_SnakeGame.WIDTH) {
 
+		}
 		return false;
 	}
 
 	public boolean isHeadCollidingWithBody() {
 		// 1. complete the method so it returns true if the head is located
 		// in the same location as any other body segment
-
+		
 		return false;
 	}
 
