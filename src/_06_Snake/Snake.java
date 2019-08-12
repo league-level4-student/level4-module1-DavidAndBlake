@@ -51,7 +51,7 @@ public class Snake {
 		}
 			break;
 		case RIGHT: {
-			newLocation = new Location(head.getLocation().x + 1, head.getLocation().y - 1);
+			newLocation = new Location(head.getLocation().x + 1, head.getLocation().y);
 		}
 			break;
 		}
@@ -76,7 +76,34 @@ public class Snake {
 		// make sure the snake cannot completely reverse directions.
 		if (currentDirection == Direction.UP) { // THIS IS HOW YOU PREVENT THE SNAKE FROM REVERSING DIRECTIONS
 			if (d != Direction.DOWN) {
-				currentDirection = d;
+				canMove = true;
+			}
+			else{
+				canMove = false;
+			}
+		}
+		if (currentDirection == Direction.LEFT) { // THIS IS HOW YOU PREVENT THE SNAKE FROM REVERSING DIRECTIONS
+			if (d != Direction.RIGHT) {
+				canMove = true;
+			}
+			else{
+				canMove = false;
+			}
+		}
+		if (currentDirection == Direction.RIGHT) { // THIS IS HOW YOU PREVENT THE SNAKE FROM REVERSING DIRECTIONS
+			if (d != Direction.LEFT) {
+				canMove = true;
+			}
+			else{
+				canMove = false;
+			}
+		}
+		if (currentDirection == Direction.DOWN) { // THIS IS HOW YOU PREVENT THE SNAKE FROM REVERSING DIRECTIONS
+			if (d != Direction.UP) {
+				canMove = true;
+			}
+			else{
+				canMove = false;
 			}
 		}
 		if (canMove) {
@@ -110,7 +137,15 @@ public class Snake {
 	public boolean isHeadCollidingWithBody() {
 		// 1. complete the method so it returns true if the head is located
 		// in the same location as any other body segment
-		
+		int headx = head.getLocation().x;
+		int heady = head.getLocation().y;
+		for(int i = 0; i < snake.size(); i++){
+			if (getHeadLocation().x == //need to check both x and y
+		}
+		int bodyx = 
+		if(){
+
+		}
 		return false;
 	}
 

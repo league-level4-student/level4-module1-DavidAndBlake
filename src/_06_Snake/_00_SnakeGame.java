@@ -145,11 +145,18 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 
 	private void setFoodLocation() {
 		// 1. Create a new Location object that is set to a random location
+		Random rand = new Random();
+		int rando = rand.nextInt(50);
+		Location loco;
+		loco = new Location(rando,rando);
 
 		// 2. set the foodLocation variable equal to the Location object you just
 		// created.
 		// use the snake's isLocationOnSnake method to make sure you don't put the food
 		// on the snake
+
+		foodLocation = loco;
+
 
 	}
 
