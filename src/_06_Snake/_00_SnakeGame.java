@@ -156,22 +156,36 @@ public class _00_SnakeGame implements ActionListener, KeyListener {
 		// on the snake
 
 		foodLocation = loco;
-
+		if(snake.isLocationOnSnake(foodLocation) == true)
+		{
+			foodLocation = loco;
+		}
 
 	}
 
 	private void gameOver() {
 
 		// 1. stop the timer
-
+		timer.stop();
 		// 2. tell the user their snake is dead
-
+		JOptionPane.showMessageDialog(null,"Sorry, your snake is dead.\nNot the one in the game, that's not really a snake, it's just a series of dots made to make you think you're looking at a snake.\n" +
+				"I'm talking about your actual pet snake that you have at home. It's dead. Maybe you're thinking at this point:\n" +
+				"\"Wait a minute game, I don't have a pet snake!\" In which case, don't worry, we got you a pet snake.\nHe's at your house now, and it's already dead due to your negligence. How do you like that you sick monster? He died at your hands!\n" +
+				"There, I hope you're happy. You just wasted precious time playing a video game which did nothing to enrich your life or give you new skills.");
 		// 3. ask them if they want to play again.
-
+		Object[]options = {"Oh yes! I love having dead snakes in my house!", "NO! What sort of sick game is this!?", "You're an idiot.", "No thanks. You made a good point. I'm going to go do something productive now."};
+		int intOptions = (int) JOptionPane.showOptionDialog(null, "Would you like to play again?","I'm so sorry for his behavior.",JOptionPane.
+				YES_NO_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION, null, options, options[3]);
 		// 4. if they want to play again
 		// reset the snake and the food and start the timer
 		// else, exit the game
-
+switch (intOptions){
+	case 0:{
+		JOptionPane.showMessageDialog(null, "Wonderful! I'll go get more snakes!");
+		snake.reset(new Location(WIDTH/2,HEIGHT/2));
+		foodLocation.equals() //LEFT OFF HERE
+	}
+}
 	}
 
 	@Override
