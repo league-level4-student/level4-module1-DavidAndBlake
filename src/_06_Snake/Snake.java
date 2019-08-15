@@ -74,7 +74,7 @@ public class Snake {
 		// is true.
 		// set canMove equal to false.
 		// make sure the snake cannot completely reverse directions.
-		if (currentDirection == Direction.UP) { // THIS IS HOW YOU PREVENT THE SNAKE FROM REVERSING DIRECTIONS
+		if (currentDirection == Direction.UP) {
 			if (d != Direction.DOWN) {
 				canMove = true;
 			}
@@ -82,7 +82,7 @@ public class Snake {
 				canMove = false;
 			}
 		}
-		if (currentDirection == Direction.LEFT) { // THIS IS HOW YOU PREVENT THE SNAKE FROM REVERSING DIRECTIONS
+		if (currentDirection == Direction.LEFT) {
 			if (d != Direction.RIGHT) {
 				canMove = true;
 			}
@@ -90,7 +90,7 @@ public class Snake {
 				canMove = false;
 			}
 		}
-		if (currentDirection == Direction.RIGHT) { // THIS IS HOW YOU PREVENT THE SNAKE FROM REVERSING DIRECTIONS
+		if (currentDirection == Direction.RIGHT) {
 			if (d != Direction.LEFT) {
 				canMove = true;
 			}
@@ -98,7 +98,7 @@ public class Snake {
 				canMove = false;
 			}
 		}
-		if (currentDirection == Direction.DOWN) { // THIS IS HOW YOU PREVENT THE SNAKE FROM REVERSING DIRECTIONS
+		if (currentDirection == Direction.DOWN) {
 			if (d != Direction.UP) {
 				canMove = true;
 			}
@@ -110,7 +110,6 @@ public class Snake {
 			currentDirection = d;
 		}
 		canMove = false;
-//		I DON'T KNOW HOW TO ENSURE THE SNAKE CAN'T REVERSE DIRECTIONS. ASK DAVID ABOUT THAT.
 	}
 
 	public void reset(Location loc) {
@@ -129,7 +128,10 @@ public class Snake {
 		int x = head.getLocation().x;
 		int y = head.getLocation().y;
 		if (x < 0 || x > _00_SnakeGame.WIDTH) {
-
+			return true;
+		}
+		if (y < 0 || y > _00_SnakeGame.WIDTH){
+			return true;
 		}
 		return false;
 	}
@@ -140,11 +142,9 @@ public class Snake {
 		int headx = head.getLocation().x;
 		int heady = head.getLocation().y;
 		for(int i = 0; i < snake.size(); i++){
-			if (getHeadLocation().x == //need to check both x and y
-		}
-		int bodyx = 
-		if(){
-
+			if (getHeadLocation().x == snake.get(i).getLocation().x && getHeadLocation().y == snake.get(i).getLocation().y){
+				return true;
+			}
 		}
 		return false;
 	}
@@ -152,7 +152,14 @@ public class Snake {
 	public boolean isLocationOnSnake(Location loc) {
 		// 1. complete the method so it returns true if the passed in
 		// location is located on the snake
-
+		for (int i = 0; i < snake.size(); i++){
+			if(loc.x == snake.get(i).getLocation().x && loc.y == snake.get(i).getLocation().y){
+				return true;
+			}
+			if(loc.x == head.getLocation().x && loc.y == head.getLocation().y){
+				return true;
+			}
+		}
 		return false;
 	}
 
