@@ -18,191 +18,238 @@ import javax.swing.Timer;
 // Go through the methods and complete the steps in this class
 // and the Snake class
 
-public class _00_SnakeGame implements ActionListener, KeyListener {
-	public static final Color BORDER_COLOR = Color.WHITE;
-	public static final Color BACKGROUND_COLOR = Color.BLACK;
-	public static final Color FOOD_COLOR = Color.RED;
-	public static final int WIDTH = 15;
-	public static final int HEIGHT = 12;
-	public static final int WINDOW_SCALE = 50;
-	public static final int WINDOW_WIDTH = WINDOW_SCALE * WIDTH;
-	public static final int WINDOW_HEIGHT = WINDOW_SCALE * HEIGHT;
+public class _00_SnakeGame implements ActionListener, KeyListener
+{
+    public static final Color BORDER_COLOR = Color.WHITE;
+    public static final Color BACKGROUND_COLOR = Color.BLACK;
+    public static final Color FOOD_COLOR = Color.RED;
+    public static final int WIDTH = 15;
+    public static final int HEIGHT = 12;
+    public static final int WINDOW_SCALE = 50;
+    public static final int WINDOW_WIDTH = WINDOW_SCALE * WIDTH;
+    public static final int WINDOW_HEIGHT = WINDOW_SCALE * HEIGHT;
 
-	private JFrame window;
-	private JPanel panel;
+    private JFrame window;
+    private JPanel panel;
 
-	private Snake snake;
+    private Snake snake;
 
-	private Timer timer;
+    private Timer timer;
 
-	private Location foodLocation;
+    private Location foodLocation;
 
-	public _00_SnakeGame() {
-		snake = new Snake(new Location(WIDTH / 2, HEIGHT / 2));
+    public _00_SnakeGame()
+    {
+        snake = new Snake(new Location(WIDTH / 2, HEIGHT / 2));
 
-		window = new JFrame("Snake");
-		panel = new JPanel() {
-			private static final long serialVersionUID = 1L;
+        window = new JFrame("Snake");
+        panel = new JPanel()
+        {
+            private static final long serialVersionUID = 1L;
 
-			@Override
-			public void paintComponent(Graphics g) {
-				Graphics2D g2 = (Graphics2D) g;
+            @Override
+            public void paintComponent(Graphics g)
+            {
+                Graphics2D g2 = (Graphics2D) g;
 
-				g2.setColor(BACKGROUND_COLOR);
-				g2.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+                g2.setColor(BACKGROUND_COLOR);
+                g2.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
 
-				g2.setColor(FOOD_COLOR);
-				g2.drawOval(foodLocation.x * WINDOW_SCALE, foodLocation.y * WINDOW_SCALE, Snake.BODY_SIZE,
-						Snake.BODY_SIZE);
-				snake.draw(g);
-			}
-		};
+                g2.setColor(FOOD_COLOR);
+                g2.drawOval(foodLocation.x * WINDOW_SCALE, foodLocation.y * WINDOW_SCALE, Snake.BODY_SIZE,
+                        Snake.BODY_SIZE);
+                snake.draw(g);
+            }
+        };
 
-		panel.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
-		window.add(panel);
+        panel.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
+        window.add(panel);
 
-		timer = new Timer(0, this);
+        timer = new Timer(0, this);
 
-		window.pack();
-		window.addKeyListener(this);
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setVisible(true);
+        window.pack();
+        window.addKeyListener(this);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setVisible(true);
 
-		setFoodLocation();
+        setFoodLocation();
 
-		startGame();
-	}
+        startGame();
+    }
 
-	public void startGame() {
-		// 1. Save the instructions for the game in the following string variable.
-		String instructions = "Use the arrow keys to move. Try to collect the dots on screen without touching your own body. Grow as long as you can before you die.";
+    public void startGame()
+    {
+        // 1. Save the instructions for the game in the following string variable.
+        String instructions = "Use the arrow keys to move. Try to collect the dots on screen without touching your own body. Grow as long as you can before you die.";
 
-		String[] options = new String[] { "Expert", "Moderate", "Beginner" };
-		int input = JOptionPane.showOptionDialog(null, instructions, "Snake", 0, -1, null, options, 0);
+        String[] options = new String[]{"Expert", "Moderate", "Beginner"};
+        int input = JOptionPane.showOptionDialog(null, instructions, "Snake", 0, -1, null, options, 0);
 
-		String choice = options[input];
+        String choice = options[input];
 
-		// 2. Use a switch statement to determine which difficulty was chosen.
-		// Use timer.setDelay(delay) with different numbers to change the speed
-		// of the game. The smaller the number, the faster it goes.
-		switch (choice) {
+        // 2. Use a switch statement to determine which difficulty was chosen.
+        // Use timer.setDelay(delay) with different numbers to change the speed
+        // of the game. The smaller the number, the faster it goes.
+        switch (choice)
+        {
 
-		case "Beginner": {
-			timer.setDelay(450);
-		}
-			break;
-		case "Moderate": {
-			timer.setDelay(250);
-		}
-			break;
-		case "Expert": {
-			timer.setDelay(150);
-		}
-			break;
-		}
-		// 3. start the timer
-		timer.start();
-	}
+            case "Beginner":
+            {
+                timer.setDelay(350);
+            }
+            break;
+            case "Moderate":
+            {
+                timer.setDelay(200);
+            }
+            break;
+            case "Expert":
+            {
+                timer.setDelay(100);
+            }
+            break;
+        }
+        // 3. start the timer
+        timer.start();
+    }
 
-	public static void main(String[] args) {
-		new _00_SnakeGame();
-	}
+    public static void main(String[] args)
+    {
+        new _00_SnakeGame();
+    }
 
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+    @Override
+    public void keyTyped(KeyEvent e)
+    {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// 1. Use a switch statement on e.getKeyCode()
-		// to determine which key was pressed.
-		switch (e.getKeyCode()) {
-		case KeyEvent.VK_DOWN:
-			snake.setDirection(Direction.DOWN);
-			break;
-		case KeyEvent.VK_RIGHT:
-			snake.setDirection(Direction.RIGHT);
-			break;
-		case KeyEvent.VK_UP:
-			snake.setDirection(Direction.UP);
-			break;
-		case KeyEvent.VK_LEFT:
-			snake.setDirection(Direction.LEFT);
-			break;
-		case KeyEvent.VK_SPACE:
-			snake.feed();
-		default:
-			break;
-		}
-		// if an arrow key is pressed, set the snake's
-		// direction accordingly
+    @Override
+    public void keyPressed(KeyEvent e)
+    {
+        // 1. Use a switch statement on e.getKeyCode()
+        // to determine which key was pressed.
+        switch (e.getKeyCode())
+        {
+            case KeyEvent.VK_DOWN:
+                snake.setDirection(Direction.DOWN);
+                break;
+            case KeyEvent.VK_RIGHT:
+                snake.setDirection(Direction.RIGHT);
+                break;
+            case KeyEvent.VK_UP:
+                snake.setDirection(Direction.UP);
+                break;
+            case KeyEvent.VK_LEFT:
+                snake.setDirection(Direction.LEFT);
+                break;
+            case KeyEvent.VK_SPACE:
+                snake.feed();
+            default:
+                break;
+        }
+        // if an arrow key is pressed, set the snake's
+        // direction accordingly
 
-		// if the space key is pressed, call the snake's feed method
+        // if the space key is pressed, call the snake's feed method
 
-	}
+    }
 
-	private void setFoodLocation() {
-		// 1. Create a new Location object that is set to a random location
-		Random rand = new Random();
-		int rando = rand.nextInt(50);
-		Location loco;
-		loco = new Location(rando,rando);
+    private void setFoodLocation()
+    {
+        // 1. Create a new Location object that is set to a random location
+        Random rand = new Random();
+        int rando = rand.nextInt(50);
+        Location loco;
+        loco = new Location(rando, rando);
 
-		// 2. set the foodLocation variable equal to the Location object you just
-		// created.
-		// use the snake's isLocationOnSnake method to make sure you don't put the food
-		// on the snake
+        // 2. set the foodLocation variable equal to the Location object you just
+        // created.
+        // use the snake's isLocationOnSnake method to make sure you don't put the food
+        // on the snake
 
-		foodLocation = loco;
-		if(snake.isLocationOnSnake(foodLocation) == true)
-		{
-			foodLocation = loco;
-		}
+        foodLocation = loco;
+        if (snake.isLocationOnSnake(foodLocation) == true)
+        {
+            foodLocation = loco;
+        }
 
-	}
+    }
 
-	private void gameOver() {
+    private void gameOver()
+    {
 
-		// 1. stop the timer
-		timer.stop();
-		// 2. tell the user their snake is dead
-		JOptionPane.showMessageDialog(null,"Sorry, your snake is dead.\nNot the one in the game, that's not really a snake, it's just a series of dots made to make you think you're looking at a snake.\n" +
-				"I'm talking about your actual pet snake that you have at home. It's dead. Maybe you're thinking at this point:\n" +
-				"\"Wait a minute game, I don't have a pet snake!\" In which case, don't worry, we got you a pet snake.\nHe's at your house now, and it's already dead due to your negligence. How do you like that you sick monster? He died at your hands!\n" +
-				"There, I hope you're happy. You just wasted precious time playing a video game which did nothing to enrich your life or give you new skills.");
-		// 3. ask them if they want to play again.
-		Object[]options = {"Oh yes! I love having dead snakes in my house!", "NO! What sort of sick game is this!?", "You're an idiot.", "No thanks. You made a good point. I'm going to go do something productive now."};
-		int intOptions = (int) JOptionPane.showOptionDialog(null, "Would you like to play again?","I'm so sorry for his behavior.",JOptionPane.
-				YES_NO_CANCEL_OPTION, JOptionPane.DEFAULT_OPTION, null, options, options[3]);
-		// 4. if they want to play again
-		// reset the snake and the food and start the timer
-		// else, exit the game
-switch (intOptions){
-	case 0:{
-		JOptionPane.showMessageDialog(null, "Wonderful! I'll go get more snakes!");
-		snake.reset(new Location(WIDTH/2,HEIGHT/2));
-		foodLocation.equals() //LEFT OFF HERE
-	}
-}
-	}
+        // 1. stop the timer
+        timer.stop();
+        // 2. tell the user their snake is dead
+        JOptionPane.showMessageDialog(null, "Sorry, your snake is dead.\nNot the one in the game, that's not really a snake, it's just a series of dots made to make you think you're looking at a snake.\n" +
+                "I'm talking about your actual pet snake that you have at home. It's dead. Maybe you're thinking at this point:\n" +
+                "\"Wait a minute game, I don't have a pet snake!\" In which case, don't worry, we got you a pet snake.\nHe's at your house now, and it's already dead due to your negligence. How do you like that you sick monster? He died at your hands!\n" +
+                "There, I hope you're happy. You just wasted precious time playing a video game which did nothing to enrich your life or give you new skills.");
+        // 3. ask them if they want to play again.
+        Object[] options = {"Oh yes! I love having dead snakes in my house!", "NO! What sort of sick game is this!?", "You're an idiot.", "No thanks. You made a good point."};
+        int intOptions = (int) JOptionPane.showOptionDialog(null, "Would you like to play again?", "I'm so sorry for his behavior.", 0, -1, null, options, 0);
+        // 4. if they want to play again
+        // reset the snake and the food and start the timer
+        // else, exit the game
+        switch (intOptions)
+        {
+            case 0:
+            {
+                JOptionPane.showMessageDialog(null, "Wonderful! I'll go get more snakes!");
+                snake.reset(new Location(WIDTH / 2, HEIGHT / 2));
+                startGame();
+                if (foodLocation.equals(snake))
+                {
+                    setFoodLocation();
+                }
 
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-	}
+            }
+            break;
+            case 1:
+            {
+                JOptionPane.showMessageDialog(null, "Good choice! Go outside and play, or study, or anything that doesn't involve looking at a screen without learning anything.");
+                System.exit(0);
+            }
+            break;
+            case 2:
+            {
+                JOptionPane.showMessageDialog(null, "No arguments here!");
+                System.exit(0);
+            }
+            break;
+            case 3:
+            {
+                JOptionPane.showMessageDialog(null, "Really? Well good for you!");
+                System.exit(0);
+            }
+        }
+    }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// 1. update the snake
+    @Override
+    public void keyReleased(KeyEvent e)
+    {
+        // TODO Auto-generated method stub
+    }
 
-		// 2. if the snake is colliding with its own body
-		// or if the snake is out of bounds, call gameOver
-
-		// 3. if the location of the head is equal to the location of the food,
-		// feed the snake and set the food location
-
-		// 4. call panel.repaint();
-	}
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        // 1. update the snake
+        snake.update();
+        // 2. if the snake is colliding with its own body
+        // or if the snake is out of bounds, call gameOver
+        if (snake.isHeadCollidingWithBody() || snake.isOutOfBounds()){
+            gameOver();
+        }
+        // 3. if the location of the head is equal to the location of the food,
+        // feed the snake and set the food location
+        if(snake.getHeadLocation().equals(foodLocation)){
+            snake.feed();
+            setFoodLocation();
+        }
+        // 4. call panel.repaint();
+        panel.repaint();
+    }
 }

@@ -1,9 +1,11 @@
 package _01_Custom_ArrayList;
 
-import static org.junit.Assert.*;
-import org.junit.jupiter.api.Test;
 
 //Complete the ArrayList class using the template to make the tests pass.
+
+import org.junit.jupiter.api.Test;
+
+import static junit.framework.Assert.*;
 
 public class CustomArrayListTest {
 
