@@ -54,7 +54,6 @@ public class _00_SnakeGame implements ActionListener, KeyListener
 
                 g2.setColor(BACKGROUND_COLOR);
                 g2.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-
                 g2.setColor(FOOD_COLOR);
                 g2.drawOval(foodLocation.x * WINDOW_SCALE, foodLocation.y * WINDOW_SCALE, Snake.BODY_SIZE,
                         Snake.BODY_SIZE);
@@ -105,7 +104,7 @@ public class _00_SnakeGame implements ActionListener, KeyListener
             break;
             case "Expert":
             {
-                timer.setDelay(100);
+                timer.setDelay(140);
             }
             break;
         }
@@ -160,9 +159,15 @@ public class _00_SnakeGame implements ActionListener, KeyListener
     {
         // 1. Create a new Location object that is set to a random location
         Random rand = new Random();
-        int rando = rand.nextInt(50);
+        int widthRando = rand.nextInt(WIDTH);
+        int heightRando = rand.nextInt(HEIGHT);
         Location loco;
-        loco = new Location(rando, rando);
+        loco = new Location(widthRando, heightRando);
+        while (snake.isLocationOnSnake(loco)){
+            widthRando = rand.nextInt(WIDTH);
+            heightRando = rand.nextInt(HEIGHT);
+            loco = new Location(widthRando, heightRando);
+        }
 
         // 2. set the foodLocation variable equal to the Location object you just
         // created.

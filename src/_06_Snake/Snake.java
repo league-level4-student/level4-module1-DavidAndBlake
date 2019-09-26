@@ -88,49 +88,38 @@ public class Snake
         // make sure the snake cannot completely reverse directions.
         if (currentDirection == Direction.UP)
         {
-            if (d != Direction.DOWN)
+            if (d == Direction.DOWN)
             {
-                canMove = true;
-            } else
-            {
-                canMove = false;
+               return;
             }
         }
         if (currentDirection == Direction.LEFT)
         {
-            if (d != Direction.RIGHT)
+            if (d == Direction.RIGHT)
             {
-                canMove = true;
-            } else
-            {
-                canMove = false;
+               return;
             }
         }
         if (currentDirection == Direction.RIGHT)
         {
-            if (d != Direction.LEFT)
+            if (d == Direction.LEFT)
             {
-                canMove = true;
-            } else
-            {
-                canMove = false;
+                return;
             }
         }
         if (currentDirection == Direction.DOWN)
         {
-            if (d != Direction.UP)
+            if (d == Direction.UP)
             {
-                canMove = true;
-            } else
-            {
-                canMove = false;
+                return;
             }
         }
         if (canMove)
         {
             currentDirection = d;
+            canMove = false;
         }
-        canMove = false;
+
     }
 
     public void reset(Location loc)
@@ -150,11 +139,11 @@ public class Snake
         // and false otherwise
         int x = head.getLocation().x;
         int y = head.getLocation().y;
-        if (x < 0 || x > _00_SnakeGame.WIDTH)
+        if (x < 0 || x >= _00_SnakeGame.WIDTH)
         {
             return true;
         }
-        if (y < 0 || y > _00_SnakeGame.WIDTH)
+        if (y < 0 || y >= _00_SnakeGame.HEIGHT)
         {
             return true;
         }
@@ -183,12 +172,7 @@ public class Snake
         // location is located on the snake
         for (int i = 0; i < snake.size(); i++)
         {
-            if (loc.x == snake.get(i).getLocation().x && loc.y == snake.get(i).getLocation().y)
-            {
-                return true;
-            }
-            if (loc.x == head.getLocation().x && loc.y == head.getLocation().y)
-            {
+            if(loc.equals(snake.get(i).getLocation())){
                 return true;
             }
         }
